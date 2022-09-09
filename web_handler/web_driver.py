@@ -32,8 +32,9 @@ class WebDriver:
 
     def __init__(self, driver_type):
         self.driver_type = driver_type
+        self._initialize()
 
-    def initialize(self):
+    def _initialize(self):
         options = Options()
         options.headless = True
         options.add_argument("--window-size=1920,1200")
