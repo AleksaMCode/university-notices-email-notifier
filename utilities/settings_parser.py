@@ -20,7 +20,7 @@ class SettingsParse:
     def read() -> Settings:
         if not os.path.exists(SettingsParse.SETTINGS_CONFIG):
             SettingsParse.save(Settings())
-        else:
-            with open(SettingsParse.SETTINGS_CONFIG) as infile:
-                data = json.load(infile)
-                return data
+
+        with open(SettingsParse.SETTINGS_CONFIG) as infile:
+            data = json.load(infile)
+            return data
