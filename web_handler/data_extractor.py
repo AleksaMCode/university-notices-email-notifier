@@ -8,10 +8,11 @@ class DataExtractor:
     web_driver: WebDriver
     soup: BeautifulSoup
     last_fetch: datetime
+    DATETIME_FORMAT: str = "%d/%m/%y %H:%M:%S"
 
     def __init__(self, web_driver, last_fetch: str):
         self.web_driver = web_driver
-        self.last_fetch = datetime.strptime(last_fetch, '%d/%m/%y %H:%M:%S')
+        self.last_fetch = datetime.strptime(last_fetch, self.DATETIME_FORMAT)
         self.soup = BeautifulSoup(self.web_driver.page_source, "html.parser")
 
     def get_oglasi(self):
@@ -24,7 +25,7 @@ class DataExtractor:
                 h2_headings = oglas.find_all('h2')
                 for i in range(2):
                     if h2_headings[i] is not "":
-                        dt = datetime.strptime(h2_headings[i].text, '%d/%m/%y %H:%M:%S')
+                        dt = datetime.strptime(h2_headings[i].text, self.DATETIME_FORMAT)
                         if self.latest_read_time > dt:
                             continue
                     oglas_info.insert(h2_headings[i].text)
