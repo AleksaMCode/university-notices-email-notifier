@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timedelta
 from typing import List
 
 from sqlalchemy import Column, Integer, String, Table, create_engine, UniqueConstraint
@@ -11,7 +12,9 @@ Base = declarative_base()
 
 
 class DatabaseHandler:
-    def __init__(self, sqlite_filepath: str, db_interval):
+    DATETIME_FORMAT: str = "%d/%m/%y %H:%M:%S"
+
+    def __init__(self, sqlite_filepath: str, db_interval: str):
         new_table = os.path.exists(sqlite_filepath)
         self.engine = create_engine(f'sqlite:///{sqlite_filepath}', echo=True)
         session_maker = sessionmaker(bind=self.engine)
@@ -32,6 +35,17 @@ class DatabaseHandler:
                 Column("attachment_link", String),
                 UniqueConstraint('id')
             )
+
+        self.clean(db_interval)
+
+    def clean(self, db_interval):
+        rows = self.select_all()
+        for row in rows:
+            dt = datetime.strptime(row.date, self.DATETIME_FORMAT)
+            now = datetime.datetime.now()
+            diff = now - dt
+            if diff > datetime.timedelta(hours=int(db_interval) * 24):
+                self.session.delete(row)
 
     def insert(self, oglasi: List[Oglas]):
         self.session.add_all(oglasi)
