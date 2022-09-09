@@ -35,3 +35,6 @@ class DatabaseHandler:
     def insert_oglasi(self, oglasi: List[Oglas]):
         self.session.add_all(oglasi)
         self.session.commit()
+
+    def select_oglasi(self, count: int):
+        self.session.query(Oglas).order_by(Oglas.id.desc()).limit(count)
