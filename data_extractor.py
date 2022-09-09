@@ -7,11 +7,11 @@ from datetime import datetime
 class DataExtractor:
     web_driver: WebDriver
     soup: BeautifulSoup
-    latest_read_time: datetime
+    last_fetch: datetime
 
-    def __init__(self, web_driver, latest_read_time: str):
+    def __init__(self, web_driver, last_fetch: str):
         self.web_driver = web_driver
-        self.latest_read_time = datetime.strptime(latest_read_time, '%d/%m/%y %H:%M:%S')
+        self.last_fetch = datetime.strptime(last_fetch, '%d/%m/%y %H:%M:%S')
         self.soup = BeautifulSoup(self.web_driver.page_source, "html.parser")
 
     def get_oglasi(self):
