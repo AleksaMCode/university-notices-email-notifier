@@ -37,4 +37,4 @@ class DatabaseHandler:
         self.session.commit()
 
     def select(self, count: int):
-        self.session.query(Oglas).order_by(Oglas.id.desc()).limit(count)
+        return self.session.query(Oglas).order_by(Oglas.id.desc()).limit(count)
