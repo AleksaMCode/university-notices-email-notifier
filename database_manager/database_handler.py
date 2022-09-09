@@ -11,7 +11,7 @@ Base = declarative_base()
 
 
 class DatabaseHandler:
-    def __init__(self, sqlite_filepath: str):
+    def __init__(self, sqlite_filepath: str, db_interval):
         new_table = os.path.exists(sqlite_filepath)
         self.engine = create_engine(f'sqlite:///{sqlite_filepath}', echo=True)
         session_maker = sessionmaker(bind=self.engine)
@@ -36,6 +36,9 @@ class DatabaseHandler:
     def insert(self, oglasi: List[Oglas]):
         self.session.add_all(oglasi)
         self.session.commit()
+
+    def select_all(self):
+        return self.session.query(Oglas).all()
 
     def select(self, count: int, year: int):
         return self.session.query(Oglas).filter_by(Oglas.year == year).order_by(Oglas.id.desc()).limit(count)
