@@ -40,7 +40,7 @@ class DataExtractor:
                     oglas_info.insert("")
                     oglas_info.insert("")
             oglasi_list.insert(
-                Oglas(ime_predmeta=oglas_info[2], year=year, date=oglas_info[0], title=oglas_info[1],
+                Oglas(subject=oglas_info[2], year=year, date=oglas_info[0], title=oglas_info[1],
                       content=oglas_info[3], attachment_text=oglas_info[4], attachment_link=oglas_info[5]))
 
         return oglasi_list

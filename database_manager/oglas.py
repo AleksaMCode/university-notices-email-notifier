@@ -5,7 +5,7 @@ from database_handler import Base
 class Oglas(Base):
     __tablename__ = "oglasi"
 
-    ime_predmeta = Column(String)
+    subject = Column(String)
     year = Column(Integer)
     date = Column(String)
     title = Column(String)

@@ -23,7 +23,7 @@ class DatabaseHandler:
                 "oglasi",
                 Base.metadata,
                 Column("id", Integer, nullable=False, primary_key=True, autoincrement=True),
-                Column("ime_predmeta", String),
+                Column("subject", String),
                 Column("year", Integer),
                 Column("date", String),
                 Column("title", String),
