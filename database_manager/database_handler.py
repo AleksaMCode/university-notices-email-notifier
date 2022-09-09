@@ -11,7 +11,7 @@ Base = declarative_base()
 
 
 class DatabaseHandler:
-    def __init__(self, sqlite_filepath):
+    def __init__(self, sqlite_filepath: str):
         new_table = os.path.exists(sqlite_filepath)
         self.engine = create_engine(f'sqlite:///{sqlite_filepath}', echo=True)
         session_maker = sessionmaker(bind=self.engine)
