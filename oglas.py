@@ -8,7 +8,7 @@ class Oglas:
     title: str
     content: str
     attachment_text: str
-    attachment_link : str
+    attachment_link: str
 
     def __init__(self, oglas: Tuple[str, str, str, str, str, str]):
         self.ime_predmeta = oglas[0]
