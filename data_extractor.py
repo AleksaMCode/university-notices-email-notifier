@@ -1,4 +1,4 @@
-from oglas import Oglas
+from database_manager.oglas import Oglas
 from web_driver import WebDriver
 from bs4 import BeautifulSoup
 from datetime import datetime
