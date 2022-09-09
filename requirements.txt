@@ -3,3 +3,4 @@ requests
 selenium
 webdriver-manager
 sqlalchemy
+dearpygui
