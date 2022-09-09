@@ -1,7 +1,8 @@
 from sqlalchemy import Column, String
+from database_handler import Base
 
 
-class Oglas:
+class Oglas(Base):
     __tablename__ = "oglasi"
 
     ime_predmeta = Column(String)
