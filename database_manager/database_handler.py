@@ -39,3 +39,10 @@ class DatabaseHandler:
 
     def select(self, count: int, year: int):
         return self.session.query(Oglas).filter_by(Oglas.year == year).order_by(Oglas.id.desc()).limit(count)
+
+    def select(self, count: int, subject: str):
+        return self.session.query(Oglas).filter_by(Oglas.subject == subject).order_by(Oglas.id.desc()).limit(count)
+
+    def select(self, count: int, subject: str, year: int):
+        return self.session.query(Oglas).filter(Oglas.subject.like(subject), Oglas.year.like(year)) \
+            .order_by(Oglas.id.desc()).limit(count)
