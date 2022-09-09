@@ -28,10 +28,11 @@ class DriverType(Enum):
 class WebDriver:
     driver: webdriver.WebDriver
     driver_type: DriverType
-    WEBSITE_PATH: str = "https://efee.etf.unibl.org/oglasi/"
+    website_path: str
 
-    def __init__(self, driver_type):
+    def __init__(self, driver_type, website_path):
         self.driver_type = driver_type
+        self.website_path = website_path
         self._initialize()
 
     def _initialize(self):
@@ -58,4 +59,4 @@ class WebDriver:
         elif self.driver_type is DriverType.INTERNET_EXPLORER:
             self.driver = webdriver.Ie(options=options, service=IEService(IEDriverManager().install()))
 
-        self.driver.get(self.WEBSITE_PATH)
+        self.driver.get(self.website_path)
