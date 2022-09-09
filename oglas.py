@@ -1,19 +1,12 @@
-from datetime import datetime
-from typing import Tuple
+from sqlalchemy import Column, String
 
 
 class Oglas:
-    ime_predmeta: str
-    date: str
-    title: str
-    content: str
-    attachment_text: str
-    attachment_link: str
+    __tablename__ = "oglasi"
 
-    def __init__(self, oglas: Tuple[str, str, str, str, str, str]):
-        self.ime_predmeta = oglas[0]
-        self.date = oglas[1]
-        self.title = oglas[2]
-        self.content = oglas[3]
-        self.attachment_text = oglas[5]
-        self.attachment_link = oglas[6]
+    ime_predmeta = Column(String)
+    date = Column(String)
+    title = Column(String)
+    content = Column(String)
+    attachment_text = Column(String)
+    attachment_link = Column(String)
