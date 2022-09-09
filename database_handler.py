@@ -36,5 +36,5 @@ class DatabaseHandler:
         self.session.add_all(oglasi)
         self.session.commit()
 
-    def select(self, count: int):
-        return self.session.query(Oglas).order_by(Oglas.id.desc()).limit(count)
+    def select(self, count: int, year: int):
+        return self.session.query(Oglas).filter_by(Oglas.year == year).order_by(Oglas.id.desc()).limit(count)
