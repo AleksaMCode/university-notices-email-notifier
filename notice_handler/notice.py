@@ -1,4 +1,4 @@
-from notice_builder_interface import INoticeBuilder
+from notice_handler.notice_builder_interface import INoticeBuilder
 
 
 class Notice:
@@ -17,7 +17,7 @@ class NoticeBuilder(INoticeBuilder):
         A new builder instance should contain a blank notice object, which is
         used in further assembly.
         """
-        self.notice = Notice()
+        self.notice: Notice
 
     def reset(self) -> None:
         self.notice = Notice()

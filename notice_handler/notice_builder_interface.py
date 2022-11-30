@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 
-class INoticeBuilder(metaclass=ABC):
+class INoticeBuilder(metaclass=ABCMeta):
     """
     Notice Builder Interface
     """
