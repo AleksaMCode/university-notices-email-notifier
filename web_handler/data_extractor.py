@@ -51,7 +51,7 @@ class DataExtractor:
                     notice_builder.set_text(attachment.contents[0])
                     notice_builder.set_link(attachment['href'])
 
-            notices.insert(notice_builder.notice())
+                notices.append(notice_builder.notice.__dict__)
 
         self._set_latest_fetch()
         return notices
