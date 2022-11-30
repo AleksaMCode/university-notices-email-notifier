@@ -2,6 +2,7 @@ from selenium.webdriver.remote import webdriver
 from notice_handler.notice import NoticeBuilder
 from bs4 import BeautifulSoup
 from datetime import datetime
+import atexit
 
 
 class DataExtractor:
