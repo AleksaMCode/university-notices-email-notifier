@@ -17,8 +17,8 @@ class DataExtractor:
         self.soup = BeautifulSoup(self.web_driver.page_source, "html.parser")
         atexit.register(self.cleanup)
 
-    def _set_latest_fetch(self, latest_fetch):
-        self.latest_fetch = datetime.today().strptime(self.DATETIME_FORMAT)
+    def _set_latest_fetch(self, latest_fetch: str = ""):
+        self.latest_fetch = datetime.today().strftime(self.DATETIME_FORMAT) if not latest_fetch else None
 
     def get_notice(self):
         notices = []
