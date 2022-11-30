@@ -36,6 +36,8 @@ class DataExtractor:
                         if self.latest_fetch > dt:
                             continue
 
+                    notice_builder.set_year(year)
+
                     if i == 0:
                         notice_builder.set_date(h2_headings[i].text)
                     else:  # i == 1
