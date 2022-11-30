@@ -26,7 +26,6 @@ class DriverType(Enum):
 
 
 class WebDriver:
-    driver: webdriver.WebDriver
     driver_type: DriverType
     website_path: str
 
