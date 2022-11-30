@@ -12,15 +12,17 @@ class Notice:
 
 
 class NoticeBuilder(INoticeBuilder):
+    _notice: Notice
+
     def __init__(self) -> None:
         """
         A new builder instance should contain a blank notice object, which is
         used in further assembly.
         """
-        self.notice: Notice
+        self.reset()
 
     def reset(self) -> None:
-        self.notice = Notice()
+        self._notice = Notice()
 
     @property
     def notice(self) -> Notice:
@@ -35,22 +37,22 @@ class NoticeBuilder(INoticeBuilder):
         return notice
 
     def set_subject(self, subject) -> None:
-        self.notice.subject = subject
+        self._notice.subject = subject
 
     def set_year(self, year) -> None:
-        self.notice.year = year
+        self._notice.year = year
 
     def set_date(self, date) -> None:
-        self.notice.date = date
+        self._notice.date = date
 
     def set_title(self, title) -> None:
-        self.notice.title = title
+        self._notice.title = title
 
     def set_content(self, content) -> None:
-        self.notice.content = content
+        self._notice.content = content
 
     def set_text(self, text) -> None:
-        self.notice.attachment_text = text
+        self._notice.attachment_text = text
 
     def set_link(self, link) -> None:
-        self.notice.attachment_link = link
+        self._notice.attachment_link = link
