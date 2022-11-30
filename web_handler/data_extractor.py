@@ -14,6 +14,7 @@ class DataExtractor:
         self.web_driver = web_driver
         self.latest_fetch = latest_fetch
         self.soup = BeautifulSoup(self.web_driver.page_source, "html.parser")
+        atexit.register(self.cleanup)
 
     def _set_latest_fetch(self, latest_fetch):
         self.latest_fetch = datetime.today().strptime(self.DATETIME_FORMAT)
@@ -51,3 +52,7 @@ class DataExtractor:
 
         self._set_latest_fetch()
         return notices
+
+    def cleanup(self):
+        # TODO: write new latest fetch time to config file
+        self.web_driver.quit()
