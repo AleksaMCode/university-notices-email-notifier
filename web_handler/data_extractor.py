@@ -1,6 +1,5 @@
 from selenium.webdriver.remote import webdriver
 from notice_handler.notice import NoticeBuilder
-from web_driver import WebDriver
 from bs4 import BeautifulSoup
 from datetime import datetime
 
