@@ -31,7 +31,7 @@ class DataExtractor:
                 for i in range(2):
                     # if notice doesn't have datetime set or
                     # latest fetch datetime isn't set (program is run for the fist time), ignore this check
-                    if not h2_headings[i] or not self.latest_fetch:
+                    if not self.latest_fetch and not h2_headings[i]:
                         dt = datetime.strptime(h2_headings[i].text, self.DATETIME_FORMAT)
                         if self.latest_fetch > dt:
                             continue
