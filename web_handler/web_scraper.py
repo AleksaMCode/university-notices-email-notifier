@@ -71,5 +71,5 @@ class WebScraper:
         if os.path.exists(config['SCRAPER']['notices']):
             os.remove(config['SCRAPER']['notices'])
 
-        with open('config.ini', 'w') as config_file:  # save
+        with open('config.ini', 'w') as config_file:
             config.write(config_file)
