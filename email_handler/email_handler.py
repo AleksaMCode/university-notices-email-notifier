@@ -24,6 +24,7 @@ def send_email():
     part = MIMEBase('application', "octet-stream")
     part.set_payload(open("notices.json", "rb").read())
     encoders.encode_base64(part)
+    part.add_header('Content-Transfer-Encoding', 'base64')
     part.add_header('Content-Disposition', 'attachment; filename=notices-etfbl.json')
     message.attach(part)
 

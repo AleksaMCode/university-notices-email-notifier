@@ -1,3 +1,5 @@
+import json
+
 from selenium.webdriver.remote import webdriver
 from notice_handler.notice import NoticeBuilder
 from bs4 import BeautifulSoup
@@ -5,7 +7,7 @@ from datetime import datetime
 import atexit
 
 
-class DataExtractor:
+class WebScraper:
     web_driver: webdriver.WebDriver
     soup: BeautifulSoup
     latest_fetch: datetime
@@ -20,7 +22,7 @@ class DataExtractor:
     def _set_latest_fetch(self, latest_fetch: str = ""):
         self.latest_fetch = datetime.today().strftime(self.DATETIME_FORMAT) if not latest_fetch else None
 
-    def get_notice(self):
+    def scrape(self):
         notices = []
         notice_builder = NoticeBuilder()
         for year in range(1, 5):
@@ -54,7 +56,12 @@ class DataExtractor:
                 notices.append(notice_builder.notice.__dict__)
 
         self._set_latest_fetch()
-        return notices
+
+        self._write_notices_to_json(notices)
+
+    def _write_notices_to_json(self, notices):
+        with open('notices.json', 'w') as f:
+            json.dump(notices, f)
 
     def cleanup(self):
         # TODO: write new latest fetch time to config file
