@@ -15,9 +15,8 @@ class WebScraper:
     soup: BeautifulSoup
     DATETIME_FORMAT: str = "%d.%m.%Y %H:%M:%S"
 
-    def __init__(self, web_driver, latest_fetch: str):
+    def __init__(self, web_driver):
         self.web_driver = web_driver
-        self.latest_fetch = latest_fetch
         self.soup = BeautifulSoup(self.web_driver.page_source, "html.parser")
         atexit.register(self.cleanup)
 
