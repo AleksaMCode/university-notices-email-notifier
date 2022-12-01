@@ -64,5 +64,4 @@ class WebScraper:
             json.dump(notices, f)
 
     def cleanup(self):
-        # TODO: write new latest fetch time to config file
         self.web_driver.quit()
