@@ -1,4 +1,3 @@
-from enum import Enum
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -14,48 +13,55 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.opera import OperaDriverManager
 from webdriver_manager.core.utils import ChromeType
 
-
-class DriverType(Enum):
-    CHROME = 1
-    FIREFOX = 2
-    EDGE = 3
-    CHROMIUM = 4
-    BRAVE = 5
-    OPERA = 6
-    INTERNET_EXPLORER = 7
+from web_handler.web_driver_builder_interface import IWebDriverBuilder, DriverType
 
 
-class WebDriver:
-    driver_type: DriverType
-    website_path: str
+class WebDriverBuilder(IWebDriverBuilder):
+    _driver_type: DriverType
+    _url: str
+    _options: Options
 
-    def __init__(self, driver_type, website_path):
-        self.driver_type = driver_type
-        self.website_path = website_path
-        self._initialize()
+    def __init__(self) -> None:
+        self._reset()
 
-    def _initialize(self):
-        options = Options()
-        options.headless = True
-        options.add_argument("--window-size=1920,1200")
-        self._set_chrome_driver(options)
+    def _reset(self) -> None:
+        self._driver_type = None
+        self._url = None
 
-    def _set_chrome_driver(self, options):
-        if self.driver_type is DriverType.CHROME:
-            self.driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
-        elif self.driver_type is DriverType.FIREFOX:
-            self.driver = webdriver.Firefox(options=options, service=FirefoxService(GeckoDriverManager().install()))
-        elif self.driver_type is DriverType.EDGE:
-            self.driver = webdriver.Edge(options=options, service=EdgeService(EdgeChromiumDriverManager().install()))
-        elif self.driver_type is DriverType.CHROMIUM:
-            self.driver = webdriver.Chrome(options=options, service=ChromiumService(
-                ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
-        elif self.driver_type is DriverType.BRAVE:
-            self.driver = webdriver.webdriver.Chrome(options=options, service=BraveService(
-                ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
-        elif self.driver_type is DriverType.OPERA:
-            self.driver = webdriver.Opera(options=options, executable_path=OperaDriverManager().install())
-        elif self.driver_type is DriverType.INTERNET_EXPLORER:
-            self.driver = webdriver.Ie(options=options, service=IEService(IEDriverManager().install()))
+    @property
+    def web_driver(self) -> None:
+        self._set_options()
+        web_driver = self._set_driver()
+        web_driver.get(self._url)
+        self._reset()
+        return web_driver
 
-        self.driver.get(self.website_path)
+    def set_driver_type(self, driver_type: DriverType) -> None:
+        self._driver_type = driver_type
+
+    def set_url(self, url: str) -> None:
+        self._url = url
+
+    def _set_options(self):
+        self._options = Options()
+        self._options.headless = True
+        self._options.add_argument("--window-size=1920,1200")  # TODO: Maybe remove this?
+
+    def _set_driver(self):
+        match self._driver_type:
+            case DriverType.CHROME:
+                return webdriver.Chrome(options=self._options, service=ChromeService(ChromeDriverManager().install()))
+            case DriverType.FIREFOX:
+                return webdriver.Firefox(options=self._options, service=FirefoxService(GeckoDriverManager().install()))
+            case DriverType.EDGE:
+                return webdriver.Edge(options=self._options, service=EdgeService(EdgeChromiumDriverManager().install()))
+            case DriverType.CHROMIUM:
+                return webdriver.Chrome(options=self._options, service=ChromiumService(
+                    ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+            case DriverType.BRAVE:
+                return webdriver.webdriver.Chrome(options=self._options, service=BraveService(
+                    ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
+            case DriverType.OPERA:
+                return webdriver.Opera(options=self._options, executable_path=OperaDriverManager().install())
+            case DriverType.INTERNET_EXPLORER:
+                return webdriver.Ie(options=self._options, service=IEService(IEDriverManager().install()))
