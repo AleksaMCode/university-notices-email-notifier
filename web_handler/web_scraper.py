@@ -65,3 +65,8 @@ class WebScraper:
 
     def cleanup(self):
         self.web_driver.quit()
+        if os.path.exists(config['SCRAPER']['notices']):
+            os.remove(config['SCRAPER']['notices'])
+
+        with open('config.ini', 'w') as config_file:  # save
+            config.write(config_file)
