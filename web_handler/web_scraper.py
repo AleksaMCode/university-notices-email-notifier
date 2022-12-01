@@ -1,10 +1,13 @@
 import json
+import os
+import atexit
 
 from selenium.webdriver.remote import webdriver
+
+from email_handler.email_handler import config
 from notice_handler.notice import NoticeBuilder
 from bs4 import BeautifulSoup
 from datetime import datetime
-import atexit
 
 
 class WebScraper:
