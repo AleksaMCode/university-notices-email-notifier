@@ -60,8 +60,8 @@ class WebScraper:
         self._write_notices_to_json(notices)
 
     def _write_notices_to_json(self, notices):
-        with open('notices.json', 'w') as f:
-            json.dump(notices, f)
+        with open(config['SCRAPER']['notices'], 'w', encoding='utf-8') as json_file:
+            json.dump(notices, json_file, ensure_ascii=False)
 
     def cleanup(self):
         self.web_driver.quit()
