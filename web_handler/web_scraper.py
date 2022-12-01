@@ -10,8 +10,7 @@ import atexit
 class WebScraper:
     web_driver: webdriver.WebDriver
     soup: BeautifulSoup
-    latest_fetch: datetime
-    DATETIME_FORMAT: str = "%d/%m/%y %H:%M:%S"
+    DATETIME_FORMAT: str = "%d.%m.%Y %H:%M:%S"
 
     def __init__(self, web_driver, latest_fetch: str):
         self.web_driver = web_driver
