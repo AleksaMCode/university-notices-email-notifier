@@ -18,7 +18,7 @@ def send_email():
     message["Subject"] = "Notices ETFBL"
     message["From"] = config['SMTP']['email']
     message["To"] = config['SMTP']['user_email']
-    part = MIMEText("You can find ETFBL notices attached in json file.", "plain")
+    part = MIMEText("You can find ETFBL notices attached in a json file.", "plain")
     message.attach(part)
 
     part = MIMEBase('application', "octet-stream")
