@@ -1,16 +1,10 @@
-# This is a sample Python script.
+from email_handler.email_handler import send_email, config
+from web_handler.web_scraper import WebScraper
+from web_handler.web_driver import WebDriverBuilder, DriverType
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    driver_builder = WebDriverBuilder()
+    driver_builder.set_driver_type(DriverType[config['SCRAPER']['web_driver'].upper()])
+    driver_builder.set_url(config['SCRAPER']['website'])
+    WebScraper(driver_builder.web_driver).scrape()
+    send_email()
