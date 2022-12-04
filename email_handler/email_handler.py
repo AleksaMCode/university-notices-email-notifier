@@ -24,10 +24,10 @@ def send_email():
         message.attach(part)
 
         part = MIMEBase('application', "octet-stream")
-        part.set_payload(open("notices.json", "rb").read())
+        part.set_payload(open(config['SCRAPER']['notices'], "rb").read())
         encoders.encode_base64(part)
         part.add_header('Content-Transfer-Encoding', 'base64')
-        part.add_header('Content-Disposition', 'attachment; filename=notices-etfbl.json')
+        part.add_header('Content-Disposition', f"'attachment; filename={config['SCRAPER']['notices']}")
         message.attach(part)
 
         server.sendmail(from_addr=config['SMTP']['email'], to_addrs=config['SMTP']['user_email'],
