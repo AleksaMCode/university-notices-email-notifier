@@ -104,4 +104,4 @@ New-Item scraper.bat
 - [ ] Replace json file attachment with html formated email response.
 - [ ] Implement year specific command for notifications.
 - [ ] Implement year range command for notifications.
-- [ ] Move sensitive information from config file, like password, to an environment variables.
+- [ ] Move sensitive information from config file, like password, to environment variables.
