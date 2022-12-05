@@ -10,13 +10,13 @@
 - [Initial Setup](#initial-setup)
   - [Config file setup](#config-file-setup)
     - [Yahoo SMTP](#yahoo-smtp)
-  - [Sheduling scraping](#sheduling-scraping)
+  - [Scheduling scraping](#scheduling-scraping)
     - [Windows - Task Scheduler](#windows---task-scheduler)
     - [Linux - Cron job](#linux---cron-job)
   - [To-Do List](#to-do-list)
 
 ## Introduction
-<p align="justify">I've always wanted to build a web scraper and I have finally found some free time recently to complete this project. Because the website is dynamic, scraping was done with <a href="https://selenium-python.readthedocs.io/api.html">Selenium API</a> in addition to <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup</a> library. The project is written in such way that it can be run both on Windows and Linux.</p>
+<p align="justify">I've always wanted to build a web scraper and recently I found some free time recently to complete this project. Because the website is dynamic, scraping was done with <a href="https://selenium-python.readthedocs.io/api.html">Selenium API</a> in addition to <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup</a> library. The project is written in such way that it can be run both on Windows and Linux.</p>
 
 > **Note**:
 > <ul><li>In order for any of this to work one prerequisite is that you have installed Python 3 on your machine.</li>
@@ -45,7 +45,7 @@ $ source venv/bin/activate
 
 
 ## Config file setup
-<p align="justify">Before using this project you first need to adjust a couple of parameters stored in a config ini file. Firstly you'll need to add an email address (<i>user_email</i> field) you fish to use to receive the email notification. If you wish to use Yahoo SMTP, you only need to update the <i>email</i> and <i>password</i> fields with your own credentials. Below you can find detail instruction how to set up Yahoo SMTP with you account. If for some reason you wan't to use another email provider, then you will need, in addition to the previously mentioned fields, to update fields that are provider specific, such as <i>port</i> and <i>SMTP server</i>. All of this information is stored in config file in the section SMTP:</p>
+<p align="justify">Before using this project you first need to adjust a couple of parameters stored in a config ini file. Firstly you'll need to add an email address (<i>user_email</i> field) you wish to use to receive the email notification. If you wish to use Yahoo SMTP, you only need to update the <i>email</i> and <i>password</i> fields with your own credentials. Below you can find detail instruction how to set up Yahoo SMTP with your account. If for some reason you want to use another email provider, then you will need, in addition to the previously mentioned fields, to update fields that are provider specific, such as <i>port</i> and <i>SMTP server</i>. All of this information is stored in a config file in the section SMTP:</p>
 
 https://github.com/AleksaMCode/university-notices-email-notifier/blob/acc714b4f22fd296cc3f366e386770c5afec71f3/config.ini#L1-L6
 
@@ -62,9 +62,9 @@ smtp.mail.yahoo.com | 587 | ✅ | ✅ | ✅| Your Yahoo email address | You Yaho
 
 <p align="justify">In order to use Yahoo SMTP server, you need to create a dedicated App Password. Firstly you need to go to your account settings area and then click on <b>Account Security</b> after which you will click on <b>Generate app password</b> link under the <b>Other ways to sign in</b> section. After the popup is shown you will need to enter your app name, which can be anything. Next, click the <b>Generate password</b> button. You should then see the 16-char long app password, which you will need to remember for later usage as Yahoo will not be showing it to you again.</p>
 
-## Sheduling scraping
+## Scheduling scraping
 ### Windows - Task Scheduler
-<p align="justify">First thing you need to create is a <i>bat</i> file which will connect the <i>python.exe</i> and <i>scraper.py</i> script. Open a directory in which you wish to create a <i>bat</i> file and open a powershell and type the following commands:</p>
+<p align="justify">First thing you need to create is a <i>bat</i> file which will connect the <i>python.exe</i> and <i>notifier.py</i> script. Open a directory in which you wish to create a <i>bat</i> file and open a powershell and type the following commands:</p>
 
 ```powershell
 New-Item scraper.bat
@@ -74,7 +74,7 @@ New-Item scraper.bat
 > **Note**:
 > <br>You will need to adjust the syntax above:
 > <ul><li>Set first path where your <i>python.exe</i> is stored.</li>
-> <li>Set second path where <i>scraper.py</i> script is stored.</li></ul>
+> <li>Set second path where <i>notifier.py</i> script is stored.</li></ul>
 
 <p align="justify">In order to schedule the scraper using Window Scheduler you will need to:
 <ul>
@@ -98,10 +98,10 @@ New-Item scraper.bat
 <p align="justify">Save your changes and exit the editor. For more details on how to specify frequency visit this <a href="https://www.adminschoice.com/crontab-quick-reference">link</a>.</p>
 
 > **Note**:
-> <br>Don't forget to exit Vim using <code>:wq</code>.
+> <br>Don't forget to exit Vim using <code>:wq</code>. :)
 
 ## To-Do List
 - [ ] Replace json file attachment with html formated email response.
 - [ ] Implement year specific command for notifications.
 - [ ] Implement year range command for notifications.
-- [ ] Move sensitive information from config file, like password, to a environment variables.
+- [ ] Move sensitive information from config file, like password, to an environment variables.
