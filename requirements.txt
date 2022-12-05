@@ -2,4 +2,3 @@ beautifulsoup4
 requests
 selenium
 webdriver-manager
-dearpygui
