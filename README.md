@@ -98,7 +98,7 @@ New-Item scraper.bat
 <p align="justify">Save your changes and exit the editor. For more details on how to specify frequency visit this <a href="https://www.adminschoice.com/crontab-quick-reference">link</a>.</p>
 
 > **Note**:
-> <br>Don't forget to exit Vim using <code>:wq</code>. :
+> <br>Don't forget to exit Vim using <code>:wq</code>.
 
 ## To-Do List
 - [ ] Replace json file attachment with html formated email response.
