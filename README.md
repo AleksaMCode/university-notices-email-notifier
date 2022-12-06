@@ -1,7 +1,7 @@
 <img width="150" align="right" src="./resources/scraping_logo.png" alt_text="[https://www.flaticon.com/free-icons/scraping](https://www.flaticon.com/free-icons/scraping)"></img>
 
 # University notices email notifier
-<p align="justify">Scraper for notices on <a href="https://efee.etf.unibl.org/oglasi/">Faculty of Electrical Engineering Banja Luka</a> website. Project scrapes notices from a website and after ETL processing data is sent to the appointed email address, using Yahoo SMTP, in a form of a JSON file.</p>
+<p align="justify">Scraper for notices on <a href="https://efee.etf.unibl.org/oglasi/">Faculty of Electrical Engineering Banja Luka</a> website. Project scrapes notices from a website and after ETL processing data is sent to the appointed email address through Yahoo SMTP, using <a href="https://docs.python.org/3/library/smtplib.html">smtplib</a> library, in a form of a JSON file.</p>
 
 ## Table of contents
 - [University notices email notifier](#university-notices-email-notifier)
