@@ -45,7 +45,7 @@ $ source venv/bin/activate
 
 
 ## Config file setup
-<p align="justify">Before using this project you first need to adjust a couple of parameters stored in a config ini file. Firstly you'll need to add an email address (<i>user_email</i> field) you wish to use to receive the email notification. If you wish to use Yahoo SMTP, you only need to update the <i>email</i> and <i>password</i> fields with your own credentials. Below you can find detail instruction how to set up Yahoo SMTP with your account. If for some reason you want to use another email provider, then you will need, in addition to the previously mentioned fields, to update fields that are provider specific, such as <i>port</i> and <i>SMTP server</i>. All of this information is stored in a config file in the section SMTP:</p>
+<p align="justify">Before using this project you first need to adjust a couple of parameters stored in a config ini file. Firstly you'll need to add an email address (<i>user_email</i> field) you wish to use to receive the email notification. If you wish to use Yahoo SMTP, you only need to update the <i>email</i> and <i>password</i> fields with your own credentials. Below you can find detail instruction how to set up Yahoo SMTP with your account. If for some reason you want to use another email provider, then you will need, in addition to the previously mentioned fields, to update fields that are provider specific, such as <i>port</i> and <i>SMTP server</i>. All of this information is stored in a config file in the SMTP section.</p>
 
 https://github.com/AleksaMCode/university-notices-email-notifier/blob/acc714b4f22fd296cc3f366e386770c5afec71f3/config.ini#L1-L6
 
@@ -104,4 +104,4 @@ New-Item scraper.bat
 - [ ] Replace json file attachment with html formated email response.
 - [ ] Implement year specific command for notifications.
 - [ ] Implement year range command for notifications.
-- [ ] Move sensitive information from config file, like password, to environment variables.
+- [ ] Move sensitive information, like password,  from config file to environment variables.
