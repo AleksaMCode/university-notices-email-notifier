@@ -7,7 +7,7 @@
 - [University notices email notifier](#university-notices-email-notifier)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
-- [Initial Setup](#initial-setup)
+  - [Initial Setup](#initial-setup)
   - [Config file setup](#config-file-setup)
     - [Yahoo SMTP](#yahoo-smtp)
   - [Scheduling scraping](#scheduling-scraping)
@@ -23,7 +23,7 @@
 > <li>Be cautious when changing <i>config.ini</i> because it's tightly coupled with python code.</li>
 > <li>The code is tested both on Windows 10 and latest Linux Mint distribution.</li></ul>
 
-# Initial Setup
+## Initial Setup
 <p align="justify">In this section I will go over details how to setup this project on Linux. However, majority of the steps are also applicable on Windows. Firstly you will open the Command line and position yourself to the desired directory, after which you will need to clone this repository using <code>git clone</code> command.</p>
 
 ```
