@@ -17,10 +17,10 @@ def send_email():
         server.login(config['SMTP']['email'], config['SMTP']['password'])
 
         message = MIMEMultipart("alternative")
-        message["Subject"] = "Notices ETFBL"
+        message["Subject"] = config['SMTP']['subject']
         message["From"] = config['SMTP']['email']
         message["To"] = config['SMTP']['user_email']
-        part = MIMEText("You can find ETFBL notices attached in a json file.", "plain")
+        part = MIMEText(config['SMTP']['text'], "plain")
         message.attach(part)
 
         part = MIMEBase('application', "octet-stream")
