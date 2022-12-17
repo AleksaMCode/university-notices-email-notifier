@@ -105,3 +105,4 @@ New-Item scraper.bat
 - [ ] Implement year specific command for notifications.
 - [ ] Implement year range command for notifications.
 - [ ] Move sensitive information, like password,  from config file to environment variables.
+- [ ] Implement toast notifications.
