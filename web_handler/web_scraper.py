@@ -46,7 +46,7 @@ class WebScraper:
                 notice_builder.set_year(year)
 
                 notice_builder.set_date(str_timestamp)
-                notice_builder.set_text(h2_headings[1].text)
+                notice_builder.set_title(h2_headings[1].text)
 
                 notice_builder.set_subject(notice.h1.text)
                 notice_builder.set_content(notice.p.text)
