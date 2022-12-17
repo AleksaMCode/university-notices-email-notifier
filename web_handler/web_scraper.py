@@ -13,9 +13,10 @@ from datetime import datetime
 class WebScraper:
     web_driver: webdriver.WebDriver
     soup: BeautifulSoup
-    DATETIME_FORMAT: str = "%d.%m.%Y %H:%M:%S"
+    DATETIME_FORMAT: str
 
     def __init__(self, web_driver):
+        self.DATETIME_FORMAT = config['SCRAPER']['dt_format']
         self.web_driver = web_driver
         self.soup = BeautifulSoup(self.web_driver.page_source, "html.parser")
         atexit.register(self.cleanup)
