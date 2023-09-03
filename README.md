@@ -54,7 +54,7 @@ https://github.com/AleksaMCode/university-notices-email-notifier/blob/acc714b4f2
 
 SMTP server | Port | Requires SSL | Requires TLS | Authentication | Username | Password |
 -- | :--: | :--: | :--: | :--: | -- | -- |
-smtp.mail.yahoo.com | 587 | ✅ | ✅ | ✅| Your Yahoo email address | You Yahoo Mail App Password, which isn't the same as your account password |
+smtp.mail.yahoo.com | 587 | ✅ | ✅ | ✅| Your Yahoo email address | Your Yahoo Mail App Password, which isn't the same as your account password |
 
 > **Restrictions**:
 > <ul><li>You can send maximum of 500 emails per day.</li>
